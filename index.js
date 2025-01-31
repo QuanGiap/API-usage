@@ -25,13 +25,13 @@ log_in_form.addEventListener("submit", signIn);
 sign_up_form.addEventListener("submit", signUp);
 add_task_button.addEventListener('click',createTask);
 window.addEventListener('beforeunload',saveState);
-
-let current_edit_task_id = null;
+//close edit modal when click exit button
 close_edit_task_modal.addEventListener("click", () => {
     isEditTask.current = false;
     clearEditInput()
     updateUI();
 });
+//close edit modal when click outside of edit container
 window.addEventListener("click", (event) => {
     if (event.target == edit_task_modal) {
         isEditTask.current=false;
@@ -39,15 +39,26 @@ window.addEventListener("click", (event) => {
         updateUI();
     }
 });
+//update task when click update button
 edit_task_form.addEventListener("submit", (event) => {
     updateTask(event,current_edit_task_id);
     isEditTask.current = false;
     updateUI();
 });
-
+//change to login form when click
+tab_log_in.addEventListener("click", () => {
+  isSignUp.current = false;
+  updateUI();
+});
+//change to sign_up form when click
+tab_sign_up.addEventListener("click", () => {
+  isSignUp.current = true;
+  updateUI();
+});
 
 let finished_tasks = [];
 let unfinish_tasks = [];
+let current_edit_task_id = null;
 let title_text_create = ''; 
 let description_text_create = '';
 let title_text_edit = ''; 
@@ -55,35 +66,34 @@ let description_text_edit = '';
 let isSignUp = { current: false };
 let isAuthSection = { current: true };
 let isEditTask = { current: false };
+let token = getCookie("auth_token");
 
+//add event when to login section or signup section
 arr_update_show.push(() =>
   updateUIShow(log_in_form, isSignUp, (v) => !v.current)
 );
+arr_update_show.push(() => updateUIShow(sign_up_form, isSignUp));
+//add event when to choose auth section or task list section
 arr_update_show.push(() =>
   updateUIShow(task_container, isAuthSection, (v) => !v.current)
 );
 arr_update_show.push(() =>
   updateUIShow(auth_container, isAuthSection, (v) => v.current)
 );
-arr_update_show.push(() => updateUIShow(sign_up_form, isSignUp));
+//add event when edit_task container should show up
 arr_update_show.push(() => updateUIShow(edit_task_modal, isEditTask));
-tab_log_in.addEventListener("click", () => {
-  isSignUp.current = false;
-  updateUI();
-});
-tab_sign_up.addEventListener("click", () => {
-  isSignUp.current = true;
-  updateUI();
-});
-let token = getCookie("auth_token");
+
 // if no token exist go to auth section
 if (token) {
   //token exist, get user task data
   isAuthSection = { current: false };
   getTasks();
 }
+//check if text input exist in local storage
 checkPrevState();
 updateUI();
+
+
 /**
  * Handles the sign-in process.
  * Prevents the default form submission, retrieves the username and password,
@@ -410,8 +420,6 @@ function checkPrevState(){
   task_description_create_input.value = task_create_desciption;
   task_title_edit_input.value = task_edit_title;
   task_description_edit_input.value = task_edit_desciption;
-  console.log(task_edit_title);
-  console.log(task_edit_desciption);
   if(task_edit_title!==''||task_edit_desciption!==''){
     isEditTask.current = true;
   }
