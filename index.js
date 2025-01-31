@@ -119,7 +119,6 @@ async function signIn(event) {
         alert(data.error);
         return;
       }
-      alert("Login successful!");
       setToken("auth_token", data.token);
       token = data.token;
       isAuthSection.current = false;
@@ -162,6 +161,7 @@ async function signUp(event) {
         return;
         }
       setToken("auth_token", data.token);
+      token = data.token;
       isAuthSection.current = false;
       getTasks();
       updateUI();
@@ -387,7 +387,6 @@ function logout() {
  */
 function clearCookies() {
     const cookies = document.cookie.split(";");
-
     for (let i = 0; i < cookies.length; i++) {
         const cookie = cookies[i];
         const eqPos = cookie.indexOf("=");
@@ -411,13 +410,11 @@ function editTask(id) {
  * Check if previous text input was saved
  */
 function checkPrevState(){
-  const task_create_title = localStorage.getItem('task_create_title')||'';
-  const task_create_desciption = localStorage.getItem('task_create_desciption')||'';
   const task_edit_title = localStorage.getItem('task_edit_title')||'';
   const task_edit_desciption = localStorage.getItem('task_edit_desciption')||'';
   current_edit_task_id = localStorage.getItem('current_edit_task_id')||null;
-  task_title_create_input.value = task_create_title;
-  task_description_create_input.value = task_create_desciption;
+  task_title_create_input.value = localStorage.getItem('task_create_title')||'';;
+  task_description_create_input.value = localStorage.getItem('task_create_desciption')||'';;
   task_title_edit_input.value = task_edit_title;
   task_description_edit_input.value = task_edit_desciption;
   if(task_edit_title!==''||task_edit_desciption!==''){
@@ -446,3 +443,4 @@ function clearCreateInput(){
   task_title_create_input.value = '';
   task_description_create_input.value = '';
 }
+console.log(token)
