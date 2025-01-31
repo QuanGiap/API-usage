@@ -119,7 +119,7 @@ async function signIn(event) {
         alert(data.error);
         return;
       }
-      setToken("auth_token", data.token);
+      setCookie("auth_token", data.token);
       token = data.token;
       isAuthSection.current = false;
       getTasks();
@@ -160,7 +160,7 @@ async function signUp(event) {
         alert(data.error);
         return;
         }
-      setToken("auth_token", data.token);
+      setCookie("auth_token", data.token);
       token = data.token;
       isAuthSection.current = false;
       getTasks();
@@ -215,9 +215,9 @@ function getCookie(cname) {
   return undefined;
 }
 /**
- * Set token to cookie
+ * Set cookie with default expire day is 1
  */
-function setToken(cname, cvalue, exdays = 1) {
+function setCookie(cname, cvalue, exdays = 1) {
     if(!cvalue) return;
   const d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -443,4 +443,3 @@ function clearCreateInput(){
   task_title_create_input.value = '';
   task_description_create_input.value = '';
 }
-console.log(token)
