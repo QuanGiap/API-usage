@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To do task website</title>
+</head>
+
+<body>
+    <div id="auth_container">
+        <h1>Welcome to To do task website</h1>
+        <nav id="tab_container">
+            <div id="tab_log_in">Log in</div>
+            <div id="tab_sign_up">Sign up</div>
+        </nav>
+        <form id="log_in_form">
+            <div class="form_container">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="submit_button" id="log_in_button">Log In</button>
+            </div>
+        </form>
+        <form id="sign_up_form">
+            <div class="form_container">
+                <label for="new_username">Username:</label>
+                <input type="text" id="new_username" name="new_username" required>
+                <label for="new_password">Password:</label>
+                <input type="password" id="new_password" name="new_password" required>
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+                <button type="submit" class="submit_button" id="sign_up_button">Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <div id="task_container">
+        <button id="logout_button" class="submit_button">Log out</button>
+        <div id="task_create_container">
+            <h2 id="task_editor">Create a new task</h2>
+            <form id="task_form">
+                <div class="form_container">
+                    <label for="task_title">Task Title:</label>
+                    <input type="text" id="task_title" name="task_title" required>
+                    <label for="task_description">Task Description:</label>
+                    <textarea id="task_description" name="task_description" required></textarea>
+                    <button type="submit" class="submit_button" id="add_task_button">Add Task</button>
+                </div>
+            </form>
+        </div>
+        <div id="edit_task_modal" class="modal">
+            <div class="modal_content">
+                <span class="close_button" id="close_edit_task_modal">&times;</span>
+                <h2>Edit Task</h2>
+                <form id="edit_task_form">
+                    <div class="form_container">
+                        <label for="edit_task_title">Task Title:</label>
+                        <input type="text" id="edit_task_title" name="edit_task_title" required>
+                        <label for="edit_task_description">Task Description:</label>
+                        <textarea id="edit_task_description" name="edit_task_description" required></textarea>
+                        <button type="submit" class="submit_button">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id='task_list'></div>
+    </div>
+    <script>
+
+    </script>
+    <script src="index.js"></script>
+</body>
+
+</html>

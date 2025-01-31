@@ -1,0 +1,170 @@
+body{
+    background-color: #ccc;
+}
+#auth_container{
+    width: max-content;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#tab_log_in {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+#tab_sign_up {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    flex: 1;
+    cursor: pointer;
+}
+#tab_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+#tab_log_in:hover, #tab_sign_up:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+}
+.form_container {
+    gap:15px;
+    max-width: 500px;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+}
+.submit_button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.submit_button:hover {
+    background-color: #45a049;
+}
+
+#task_container{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+#task_editor{
+    text-align: center;
+}
+
+.task {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 80vw;
+    max-width: 500px;
+}
+
+.task h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.task p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.task button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#logout_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f44336; /* Red background */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+#logout_button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+.task button:hover {
+    background-color: #45a049;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal_content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close_button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_button:hover,
+.close_button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
